@@ -36,7 +36,7 @@ namespace S10257116_MyBankApp
             Balance = balance;
         }
 
-        public void deposit(double balance)
+        public void Deposit(double balance)
         {
             Balance += balance;
         }
@@ -57,4 +57,30 @@ namespace S10257116_MyBankApp
             return $"Account Number: {AccNo}, Account Name: {AccName}, Balance: ${Balance}";
         }
     }
-}
+
+    class SavingsAccount : BankAccount
+    {
+        private double rate;
+        public double Rate
+        {
+            get { return rate; }
+            set { rate = value; }
+        }
+        public SavingsAccount(string accNo, string accName, double balance) 
+            : base(accNo, accName, balance)
+        {
+            Rate = rate;
+        }
+
+        public double CalculateInterest()
+        {
+            double interest = Balance * (Rate / 100);
+            return interest;
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Interest Rate: {Rate}%";
+        }
+
+}   
