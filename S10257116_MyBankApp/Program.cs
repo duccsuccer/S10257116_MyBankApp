@@ -33,7 +33,12 @@ using System.Runtime.CompilerServices;
             string accNo = Console.ReadLine();
             Deposit(sAccList, accNo);   
         }
-
+        else if(option == 3)
+        {
+            Console.WriteLine("Account Number: ");
+            string accNo = Console.ReadLine();
+            Withdraw(sAccList, accNo);
+        }
 }
 
 
@@ -59,7 +64,7 @@ static void DisplayAll(List<SavingsAccount> sAccList)
         Console.WriteLine(account);
     }
 }
-void Deposit(List<SavingsAccount> sAccList, string accNo)
+static void Deposit(List<SavingsAccount> sAccList, string accNo)
 {
     SavingsAccount? depAcc = Search(sAccList, accNo);
 
@@ -68,12 +73,13 @@ void Deposit(List<SavingsAccount> sAccList, string accNo)
         Console.Write("Amount to Deposit: ");
         double depAmount = Convert.ToDouble(Console.ReadLine());
         depAcc.Deposit(depAmount);
-        Console.WriteLine($"New balance: ${depAcc.Balance}");
+        Console.WriteLine($"{depAmount} deposited succesfully.");
+        Console.WriteLine(depAcc.ToString());
       
     }
     else
     {
-        Console.WriteLine("Account not found");
+        Console.WriteLine("Unable to find account number. Please try again.");
     }
 }
 static SavingsAccount? Search(List<SavingsAccount> sAccList, string accNo)
@@ -87,4 +93,32 @@ static SavingsAccount? Search(List<SavingsAccount> sAccList, string accNo)
         }
     }
     return null;
+}
+
+static void Withdraw(List<SavingsAccount> sAccList, string accNo)
+{
+    SavingsAccount? drawAcc = Search(sAccList, accNo);
+
+    if (drawAcc != null)
+    {
+        Console.Write("Amount to withdraw: ");
+        double drawAmount = Convert.ToDouble(Console.ReadLine());
+        drawAcc.Deposit(drawAmount);
+        Console.WriteLine($"New balance: ${drawAcc.Balance}");
+        if (drawAcc.Withdraw(drawAmount) == false)
+        {
+            Console.WriteLine("Insufficient funds.");
+        }
+        else
+        {
+            Console.WriteLine($"{drawAmount} withdrawn successfully");
+            Console.WriteLine(drawAcc.ToString());
+        }
+        
+
+    }
+    else
+    {
+        Console.WriteLine("Unable to find account number. Please try again.");
+    }
 }
