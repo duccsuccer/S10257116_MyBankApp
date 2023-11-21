@@ -5,16 +5,16 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace S10257116_MyBankApp
+namespace BankAccount
 {
     internal class BankAccount
-    {   
-       
+    {
+
         private string accNo;
         public string AccNo
-        { 
-            get { return accNo; } 
-            set {  accNo = value; } 
+        {
+            get { return accNo; }
+            set { accNo = value; }
         }
 
         private string accName;
@@ -25,11 +25,12 @@ namespace S10257116_MyBankApp
         }
         private double balance;
         public double Balance
-        { get { return balance; } 
-          set {  balance = value; } 
+        {
+            get { return balance; }
+            set { balance = value; }
         }
 
-        public BankAccount (string accNo, string accName, double balance)
+        public BankAccount(string accNo, string accName, double balance)
         {
             AccNo = accNo;
             AccName = accName;
@@ -66,7 +67,7 @@ namespace S10257116_MyBankApp
             get { return rate; }
             set { rate = value; }
         }
-        public SavingsAccount(string accNo, string accName, double balance) 
+        public SavingsAccount(string accNo, string accName, double balance, double rate)
             : base(accNo, accName, balance)
         {
             Rate = rate;
@@ -83,4 +84,5 @@ namespace S10257116_MyBankApp
             return $"{base.ToString()}, Interest Rate: {Rate}%";
         }
 
-}   
+    }
+}
