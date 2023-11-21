@@ -21,6 +21,9 @@ using System.Runtime.CompilerServices;
         int option = Convert.ToInt32(Console.ReadLine());
         if (option == 0)
         {
+            Console.WriteLine("---------\n" +
+                "Goodbye!\n" +
+                "---------");
             break;
         }
         else if (option == 1)
